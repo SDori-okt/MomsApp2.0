@@ -2,10 +2,6 @@
 
 body{
     background-image: url("/images/bg.jpg");
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Style+Script&display=swap');
-
-body{
-    background-image: url("/images/bg.jpg");
     background-attachment: fixed;
     background-size: cover;
     height: 100vh;
@@ -80,4 +76,4 @@ input[type=submit]:hover{
     background-color: #b017a1;
     transform: scale(1.1);
     font-weight: 800;
-}}
+}
