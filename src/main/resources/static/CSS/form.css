@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Style+Script&display=swap');
+
+body{
+    background-image: url("/images/bg.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+}
+body, input{
+    font-family: 'Roboto Condensed', sans-serif;
+    margin: 20px;
+}
+.textinput, .numinput{
+    border: 2px solid rgb(216, 36, 241);
+    background-color: rgba(216, 36, 241, 0.15);
+    width: 30%;
+}
+.button{
+    background-color: rgb(216, 36, 241);
+    border: none;
+    color: #CCCCCC;
+}
+input{
+    border-radius: 5px;
+    color: #CCCCCC;
+}
+label{
+    width: 120px;
+}
