@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Style+Script&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: url("../images/bg.jpg");
+    font-family: "Roboto Condensed", cursive;
+}
+span.logo a{
+    font-size: 40px;
+    font-family: "Style Script", cursive;
+    cursor: pointer;
+    color: black;
+}
+span.logo a:hover{
+    text-decoration: none;
+}
+li, a{
+    font-weight: 500;
+    font-size: 18px;
+    color: grey;
+    text-decoration: none;
+}
+header{
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10%;
+}
+ul.nav_links{
+    list-style: none;
+    padding: 0;
+    margin:0;
+}
+.nav_links li{
+    display: inline-block;
+    padding: 20px 20px;
+    align-items: normal;
+    justify-content: space-around;
+}
+ul.nav_links li a{
+    font-size: 20px;
+    display: block;
+    transition: all 0.3s ease 0s;
+}
+ul.nav_links li a:hover{
+    color: darkgray;
+    text-decoration: none;
+}
+form input[type=text]{
+    padding-left: 5px;
+}
+button{
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background: none;
+    padding:5px;
+}
+button:hover{
+    background-color: whitesmoke;
+    transition: 0.5s;
+}
+.body_container{
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+.row .col-md-6{
+    text-align: left;
+    font-weight: bold;
+    font-size: 24px;
+}
+.event_container{
+    margin-top: 10px;
+    background-color: rgba(255,255,255,0.4);
+    border-radius: 10px;
+}
+.event_container img{
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+}
+.event_container .time_stamp{
+    float: right;
+    text-decoration: none;
+    font-style: normal;
+    font-size: small;
+    font-weight: normal;
+    padding-top: 10px;
+    padding-right: 10px;
+}

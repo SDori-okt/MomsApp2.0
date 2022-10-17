@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Style+Script&display=swap');
+
+body{
+    background-image: url("/images/bg.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+h1{
+    font-family: 'Style Script', cursive;
+    text-align: center;
+}
+body, input{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+input{
+    width: 80%;
+    margin-top: 15px;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: large;
+    font-weight: bold;
+}
+.forget{
+    text-align: center;
+    font-size: small;
+    width: 80%;
+    padding: 5px;
+    margin-top: 15px;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+form{
+    display: block;
+    margin: auto;
+    line-height: 1.5;
+}
+.col-lg-6{
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.textinput{
+    border: 2px solid rgb(216, 36, 241);
+    background-color: rgba(216, 36, 241, 0.15);
+}
+.button{
+    background-color: rgb(216, 36, 241);
+    border: none;
+    color: #CCCCCC;
+}
+img{
+    display: block;
+    margin: 15px auto 0 auto;
+    width: 100px;
+    padding-right: 35px;
+    margin-bottom: 20px;
+}
+h2{
+    font-weight: bold;
+    font-size: x-large;
+}
+.col-second{
+    margin-top: 25vh;
+}
