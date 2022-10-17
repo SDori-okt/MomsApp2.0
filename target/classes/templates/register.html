@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
-    <link rel="stylesheet" th:href="@{css/form.css}">
+    <link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
 <body>
 <div class="container">
@@ -22,7 +22,7 @@
         <div th:if="${param.success}">
             <div class="alert alert-info">Sikeres regisztráció!</div>
         </div>
-        <form method="post" role="form" th:action="@{/register/save}" th:object="${user}">
+        <form method="post"  th:action="@{/register/save}" th:object="${user}">
             <p><label for="lastName">Vezetéknév:</label>
                 <input type="text" id="lastName" name="lastname" class="textinput" th:field="*{lastName}"></p>
             <p><label for="firstName">Keresztnév:</label>
