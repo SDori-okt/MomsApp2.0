@@ -31,6 +31,9 @@
                 <input type="text" id="username" name="username" class="textinput" th:field="*{username}"></p>
             <p><label for="email">E-mail:</label>
                 <input type="email" id="email" name="email" class="textinput" th:field="*{email}"></p>
+            <p th:errors="*{email}" class="text-danger"
+               th:if="${#fields.hasErrors('email')}">
+            </p>
             <p><label for="password">Jelszó:</label>
                 <input type="password" id="password" name="password" class="textinput" th:field="*{password}"></p>
             <p><label for="yearOfBirth">Születési év:</label>
