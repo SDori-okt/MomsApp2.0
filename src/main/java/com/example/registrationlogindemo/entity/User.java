@@ -45,6 +45,9 @@ public class User
     private String location;
 
     @Column(nullable=false)
+    private Long postalCode;
+
+    @Column(nullable=false)
     private String street;
 
     @Column(nullable=false)
