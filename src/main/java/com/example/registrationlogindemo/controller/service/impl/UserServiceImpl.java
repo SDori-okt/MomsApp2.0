@@ -37,6 +37,7 @@ public class UserServiceImpl implements UserService {
         user.setUsername(userDto.getUsername());
         user.setPassword(userDto.getPassword());
         user.setYearOfBirth(userDto.getYearOfBirth());
+        user.setPostalCode(userDto.getPostalCode());
         user.setLocation(userDto.getLocation());
         user.setStreet(userDto.getStreet());
         user.setHouse_number(userDto.getHouse_number());
@@ -72,6 +73,7 @@ public class UserServiceImpl implements UserService {
         userDto.setPassword(user.getPassword());
         userDto.setUsername(user.getUsername());
         userDto.setYearOfBirth(user.getYearOfBirth());
+        userDto.setPostalCode(user.getPostalCode());
         userDto.setLocation(user.getLocation());
         userDto.setStreet(user.getStreet());
         userDto.setHouse_number(user.getHouse_number());

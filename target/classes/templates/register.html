@@ -25,27 +25,46 @@
         <form method="post"  th:action="@{/register/save}" th:object="${user}">
             <p><label for="lastName">Vezetéknév:</label>
                 <input type="text" id="lastName" name="lastname" class="textinput" th:field="*{lastName}"></p>
+            <p th:errors="*{lastName}" class="text-danger"
+               th:if="${#fields.hasErrors('lastName')}">
             <p><label for="firstName">Keresztnév:</label>
                 <input type="text" id="firstName" name="firstname" class="textinput" th:field="*{firstName}"></p>
+            <p th:errors="*{firstName}" class="text-danger"
+               th:if="${#fields.hasErrors('firstName')}">
             <p><label for="username">Felhasználónév:</label>
                 <input type="text" id="username" name="username" class="textinput" th:field="*{username}"></p>
+            <p th:errors="*{username}" class="text-danger"
+               th:if="${#fields.hasErrors('username')}">
             <p><label for="email">E-mail:</label>
                 <input type="email" id="email" name="email" class="textinput" th:field="*{email}"></p>
             <p th:errors="*{email}" class="text-danger"
-               th:if="${#fields.hasErrors('email')}">
-            </p>
+               th:if="${#fields.hasErrors('email')}"></p>
             <p><label for="password">Jelszó:</label>
                 <input type="password" id="password" name="password" class="textinput" th:field="*{password}"></p>
+            <p th:errors="*{password}" class="text-danger"
+               th:if="${#fields.hasErrors('password')}">
             <p><label for="yearOfBirth">Születési év:</label>
                 <input type="number" id="yearOfBirth" name="birth_date" class="textinput" th:field="*{yearOfBirth}"></p>
+            <p th:errors="*{yearOfBirth}" class="text-danger"
+               th:if="${#fields.hasErrors('yearOfBirth')}">
+            <p><label for="postalCode">Irányítószám:</label>
+                <input type="number" id="postalCode" name="postalCode" class="numinput" th:field="*{postalCode}"></p>
+            <p th:errors="*{postalCode}" class="text-danger"
+               th:if="${#fields.hasErrors('postalCode')}">
             <p><label for="location">Város:</label>
                 <input type="text" id="location" name="location" class="textinput" th:field="*{location}"></p>
+            <p th:errors="*{location}" class="text-danger"
+               th:if="${#fields.hasErrors('location')}">
             <p><label for="street">Utca:</label>
                 <input type="text" id="street" name="street" class="textinput" th:field="*{street}"></p>
+            <p th:errors="*{street}" class="text-danger"
+               th:if="${#fields.hasErrors('street')}">
             <p><label for="house_number">Házszám:</label>
                 <input type="number" id="house_number" name="house_number" class="numinput" th:field="*{house_number}"></p>
-            <input type="submit" value="Küldés">
+            <p th:errors="*{street}" class="text-danger"
+               th:if="${#fields.hasErrors('street')}"></p>
 
+            <input type="submit" value="Küldés">
         </form>
     </div>
 </div>
