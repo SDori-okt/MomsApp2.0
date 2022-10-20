@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -30,8 +29,8 @@ public class UserDto
     private String username;
     @NotEmpty(message = "A mező kitöltése kötelező")
     private String password;
-    @NotNull(message = "A mező kitöltése kötelező")
-    private Long yearOfBirth;
+    @NotEmpty(message = "A mező kitöltése kötelező")
+    private String yearOfBirth;
     @NotNull(message = "A mező kitöltése kötelező")
     private Long postalCode;
     @NotEmpty(message = "A mező kitöltése kötelező")
@@ -40,5 +39,14 @@ public class UserDto
     private String street;
     @NotNull(message = "A mező kitöltése kötelező")
     private Long house_number;
+
+
+    @NotEmpty(message = "A mező kitöltése kötelező")
+    private String childName;
+    @NotEmpty(message = "A mező kitöltése kötelező")
+    private String childGender;
+    @NotNull(message = "A mező kitöltése kötelező")
+    private String childDateOfBirth;
+
 
 }

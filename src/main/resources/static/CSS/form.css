@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Style+Script&display=swap');
 
 body{
-    background-image: url("/images/bg.jpg");
+    background-image: url("../images/bg.jpg");
     background-attachment: fixed;
     background-size: cover;
     height: 100vh;
@@ -49,12 +49,17 @@ input{
 }
 
 input:focus{
-    border-bottom: solid normal rgb(216,36,241);
+    border-bottom-style: solid;
+    border-bottom-color: rgb(216, 36, 241);
 }
 
 label{
     flex:1;
 }
+
+
+
+
 
 
 input[type=submit]{

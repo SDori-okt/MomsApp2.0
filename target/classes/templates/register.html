@@ -11,6 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
+
     <link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
 <body>
@@ -23,6 +24,7 @@
             <div class="alert alert-info">Sikeres regisztráció!</div>
         </div>
         <form method="post"  th:action="@{/register/save}" th:object="${user}">
+
             <p><label for="lastName">Vezetéknév:</label>
                 <input type="text" id="lastName" name="lastname" class="textinput" th:field="*{lastName}"></p>
             <p th:errors="*{lastName}" class="text-danger"
@@ -43,8 +45,8 @@
                 <input type="password" id="password" name="password" class="textinput" th:field="*{password}"></p>
             <p th:errors="*{password}" class="text-danger"
                th:if="${#fields.hasErrors('password')}">
-            <p><label for="yearOfBirth">Születési év:</label>
-                <input type="number" id="yearOfBirth" name="birth_date" class="textinput" th:field="*{yearOfBirth}"></p>
+            <p><label for="yearOfBirth">Születésnap:</label>
+                <input type="date" id="yearOfBirth" name="birth_date" class="dateinput" th:field="*{yearOfBirth}"></p>
             <p th:errors="*{yearOfBirth}" class="text-danger"
                th:if="${#fields.hasErrors('yearOfBirth')}">
             <p><label for="postalCode">Irányítószám:</label>
@@ -62,7 +64,27 @@
             <p><label for="house_number">Házszám:</label>
                 <input type="number" id="house_number" name="house_number" class="numinput" th:field="*{house_number}"></p>
             <p th:errors="*{street}" class="text-danger"
-               th:if="${#fields.hasErrors('street')}"></p>
+               th:if="${#fields.hasErrors('street')}">
+
+            <p><label for="child_name">Gyermek neve:</label>
+                <input type="text" id="child_name" name="child_name" class="textinput" th:field="*{childName}"></p>
+            <p th:errors="*{childName}" class="text-danger"
+               th:if="${#fields.hasErrors('childName')}"></p>
+
+            <p>A gyermek neme:
+            <input type="radio"  id="Fiú" value="Fiú" th:field="*{childGender}">
+                <label for="Fiú">Fiú</label>
+            <input type="radio"  id="Lány" value="Lány" th:field="*{childGender}">
+                <label for="Lány">Lány</label></p>
+            <p th:errors="*{childGender}" class="text-danger"
+               th:if="${#fields.hasErrors('childGender')}"></p>
+
+
+            <p><label for="child_date_of_birth">Gyerek születési dátuma:</label>
+                <input type="date" id="child_date_of_birth" name="child_date_of_birth" class="dateinput" th:field="*{childDateOfBirth}"></p>
+            <p th:errors="*{childDateOfBirth}" class="text-danger"
+               th:if="${#fields.hasErrors('childDateOfBirth')}"></p>
+
 
             <input type="submit" value="Küldés">
         </form>

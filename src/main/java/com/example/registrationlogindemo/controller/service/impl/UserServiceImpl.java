@@ -42,6 +42,10 @@ public class UserServiceImpl implements UserService {
         user.setStreet(userDto.getStreet());
         user.setHouse_number(userDto.getHouse_number());
 
+        user.setChildName(userDto.getChildName());
+        user.setChildGender(userDto.getChildGender());
+        user.setChildDateOfBirth(userDto.getChildDateOfBirth());
+
         //encrypt the password once we integrate spring security
         //user.setPassword(userDto.getPassword());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
@@ -77,6 +81,11 @@ public class UserServiceImpl implements UserService {
         userDto.setLocation(user.getLocation());
         userDto.setStreet(user.getStreet());
         userDto.setHouse_number(user.getHouse_number());
+
+        userDto.setChildName(user.getChildName());
+        userDto.setChildGender(user.getChildGender());
+        userDto.setChildDateOfBirth(user.getChildDateOfBirth());
+
         return userDto;
     }
 

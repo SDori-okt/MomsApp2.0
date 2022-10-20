@@ -39,7 +39,7 @@ public class User
     private String username;
 
     @Column(nullable=false)
-    private Long yearOfBirth;
+    private String yearOfBirth;
 
     @Column(nullable=false)
     private String location;
@@ -52,6 +52,18 @@ public class User
 
     @Column(nullable=false)
     private Long house_number;
+
+    @Column(nullable = false)
+    private String childName;
+
+    @Column(nullable = false)
+    private String childGender;
+
+    @Column(nullable = false)
+    private String childDateOfBirth;
+
+
+
 
     @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinTable(
