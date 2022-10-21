@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="hu"
       xmlns:th="http://www.thymeleaf.org"
->
+      xmlns="http://www.w3.org/1999/html">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
@@ -66,16 +66,23 @@
             <p th:errors="*{street}" class="text-danger"
                th:if="${#fields.hasErrors('street')}">
 
+
+
+
+
+
             <p><label for="child_name">Gyermek neve:</label>
                 <input type="text" id="child_name" name="child_name" class="textinput" th:field="*{childName}"></p>
             <p th:errors="*{childName}" class="text-danger"
                th:if="${#fields.hasErrors('childName')}"></p>
 
-            <p>A gyermek neme:
-            <input type="radio"  id="Fiú" value="Fiú" th:field="*{childGender}">
+
+            <p> A gyermek neme:
+                <radio><input type="radio"  id="Fiú" value="Fiú" th:field="*{childGender}">
                 <label for="Fiú">Fiú</label>
             <input type="radio"  id="Lány" value="Lány" th:field="*{childGender}">
-                <label for="Lány">Lány</label></p>
+                <label for="Lány">Lány</label></radio>
+
             <p th:errors="*{childGender}" class="text-danger"
                th:if="${#fields.hasErrors('childGender')}"></p>
 
@@ -85,8 +92,33 @@
             <p th:errors="*{childDateOfBirth}" class="text-danger"
                th:if="${#fields.hasErrors('childDateOfBirth')}"></p>
 
+            <p>Mire keres partnert?
+                <radio>
+                    <label>
+                        <select name="select1" size=”9”>
+                            <option value="Játszótér">Játszóterezni!</option>
+                            <option value="Kültéri programok">Kültéri programok</option>
+                            <option value="Aktív">Aktív tevékenységre</option>
+                            <option value="Passzív" selected>Passzív tevékenységre</option>
+                        </select>
+                    </label></radio></p>
+
+            <p>Melyik napszak <br>a leginkább alkalmas?
+                <radio><br>
+                    <label>
+                        <select name="select1" size=”5”>
+                            <option value="8-10">8-10 óra</option>
+                            <option value="10-12">10-12 óra</option>
+                            <option value="12-14">12-14 óra</option>
+                            <option value="14-16" >14-16 óra</option>
+                            <option value="16-18" >16-18 óra</option>
+                            <option value="18-20" >18-20 óra</option>
+                        </select>
+                    </label></radio></p>
+
 
             <input type="submit" value="Küldés">
+
         </form>
     </div>
 </div>
