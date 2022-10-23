@@ -26,7 +26,7 @@ public class User
     @Column(nullable=false)
     private String firstName;
 
-    @Column()
+    @Column(nullable=false)
     private String lastName;
 
     @Column(nullable=false, unique=true)
@@ -62,7 +62,11 @@ public class User
     @Column(nullable = false)
     private String childDateOfBirth;
 
+    @Column
+    private String whatFor;
 
+    @Column
+    private String whenTo;
 
 
     @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)

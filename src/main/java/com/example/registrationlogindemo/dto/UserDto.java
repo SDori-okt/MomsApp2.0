@@ -48,5 +48,9 @@ public class UserDto
     @NotNull(message = "A mező kitöltése kötelező")
     private String childDateOfBirth;
 
+    private String whatFor;
+    private String whenTo;
+
+
 
 }

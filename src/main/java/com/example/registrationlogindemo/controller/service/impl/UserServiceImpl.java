@@ -45,6 +45,8 @@ public class UserServiceImpl implements UserService {
         user.setChildName(userDto.getChildName());
         user.setChildGender(userDto.getChildGender());
         user.setChildDateOfBirth(userDto.getChildDateOfBirth());
+        user.setWhatFor(userDto.getWhatFor());
+        user.setWhenTo(userDto.getWhenTo());
 
         //encrypt the password once we integrate spring security
         //user.setPassword(userDto.getPassword());
@@ -85,6 +87,8 @@ public class UserServiceImpl implements UserService {
         userDto.setChildName(user.getChildName());
         userDto.setChildGender(user.getChildGender());
         userDto.setChildDateOfBirth(user.getChildDateOfBirth());
+        userDto.setWhatFor(user.getWhatFor());
+        userDto.setWhenTo(user.getWhenTo());
 
         return userDto;
     }
