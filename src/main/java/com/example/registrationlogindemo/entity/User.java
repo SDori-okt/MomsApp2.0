@@ -26,7 +26,7 @@ public class User
     @Column(nullable=false)
     private String firstName;
 
-    @Column()
+    @Column(nullable=false)
     private String lastName;
 
     @Column(nullable=false, unique=true)
@@ -39,16 +39,35 @@ public class User
     private String username;
 
     @Column(nullable=false)
-    private Long yearOfBirth;
+    private String yearOfBirth;
 
     @Column(nullable=false)
     private String location;
+
+    @Column(nullable=false)
+    private Long postalCode;
 
     @Column(nullable=false)
     private String street;
 
     @Column(nullable=false)
     private Long house_number;
+
+    @Column(nullable = false)
+    private String childName;
+
+    @Column(nullable = false)
+    private String childGender;
+
+    @Column(nullable = false)
+    private String childDateOfBirth;
+
+    @Column
+    private String whatFor;
+
+    @Column
+    private String whenTo;
+
 
     @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinTable(

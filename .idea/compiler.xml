@@ -15,6 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="registration-login-demo" options="-parameters" />
       <module name="registration-login-springboot-security-thymeleaf" options="-parameters" />
     </option>
   </component>
