@@ -11,7 +11,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,9 +31,15 @@ public class UserController {
 
     @PostMapping(path = "/register_success")
     @ResponseStatus(HttpStatus.CREATED)
-    public String registerUser(@Valid @ModelAttribute("user") CreateUserRequest createUserRequest, Model model) throws Exception {
+    public String registerUser(@ModelAttribute("user") CreateUserRequest createUserRequest, Model model) {
         model.addAttribute("user", createUserRequest);
-        userService.addUser(createUserRequest);
+        try {
+            userService.addUser(createUserRequest);
+        }catch (Exception e) {
+            return "register_unsucces";
+        }
+
+
         return "login";
     }
 
