@@ -5,6 +5,7 @@ import com.example.registrationlogindemo.persistence.repository.UserRepository;
 import com.example.registrationlogindemo.service.mapper.UserMapper;
 import com.example.registrationlogindemo.web.model.CreateUserRequest;
 import com.example.registrationlogindemo.web.model.PagingSortingFilteringRequest;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.http.HttpStatus;
