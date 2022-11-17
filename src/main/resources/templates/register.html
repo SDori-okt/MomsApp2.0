@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="hu"
+<html lang="en"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/html">
+>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
@@ -11,110 +11,174 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" th:href="@{/css/form.css}">
+    <link rel="stylesheet" th:href="@{CSS/form.css}">
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <h1>Regisztráció</h1>
+<nav class="navbar navbar-expand-lg  fixed-top" th:fragment="header">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Főoldal</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
     </div>
-    <div class="row">
-        <div th:if="${param.success}">
-            <div class="alert alert-info">Sikeres regisztráció!</div>
+</nav>
+<br />
+<br />
+<br />
+<div class="container">
+    <div class="row col-md-8 offset-md-2">
+        <div class="row">
+            <div th:if="${param.success}">
+                <div class="alert alert-info">Sikeres regisztráció!</div>
+            </div>
+            <div class="card-header">
+                <h2 class="text-center">Regisztráció</h2>
+            </div>
+            <div class="card-body">
+                <form method="post" role="form" th:action="@{/register_success}" th:object="${user}">
+
+                    <div class="form-group mb-3">
+                        <label class="form-label">Vezetéknév</label>
+                        <label for="firstName"></label>
+                        <input class="form-control"
+                               id="firstName"
+                               name="firstName"
+                               placeholder="Vezetéknevét írja ide"
+                               th:field="*{firstName}"
+                               type="text"
+                        />
+                        <p th:errors="*{firstName}" class="text-danger"
+                           th:if="${#fields.hasErrors('firstName')}">
+                        </p>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="form-label">Keresztnév</label>
+                        <label for="lastName"></label>
+                        <input class="form-control"
+                               id="lastName"
+                               name="lastName"
+                               placeholder="Keresztnevét írja ide"
+                               th:field="*{lastName}"
+                               type="text"
+                        />
+                        <p th:errors="*{lastName}" class="text-danger"
+                           th:if="${#fields.hasErrors('lastName')}">
+                        </p>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Felhasználónév</label>
+                        <label for="username"></label>
+                        <input class="form-control"
+                               id="username"
+                               name="username"
+                               placeholder="Felhasználónevét írja ide"
+                               th:field="*{username}"
+                               type="text"
+                        />
+                        <p th:errors="*{username}" class="text-danger"
+                           th:if="${#fields.hasErrors('username')}">
+                        </p>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">E-mail cím</label>
+                        <label for="email"></label>
+                        <input class="form-control"
+                               id="email"
+                               name="email"
+                               placeholder="E-mail címét írja ide"
+                               th:field="*{email}"
+                               type="email"
+                        />
+                        <p th:errors="*{email}" class="text-danger"
+                           th:if="${#fields.hasErrors('email')}">
+                        </p>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="form-label">Jelszó</label>
+                        <label for="password"></label>
+                        <input class="form-control"
+                               id="password"
+                               name="password"
+                               placeholder="Jelszavát írja ide!"
+                               th:field="*{password}"
+                               type="password"
+                        />
+                        <p th:errors="*{password}" class="text-danger"
+                           th:if="${#fields.hasErrors('password')}">
+                        </p>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="form-label">Születési idő</label>
+                        <label for="dateOfBirth"></label>
+                        <input class="form-control"
+                               id="dateOfBirth"
+                               name="dateOfBirth"
+                               placeholder="Születési évét írja ide"
+                               th:field="*{dateOfBirth}"
+                               type="date"
+                        />
+                        <p th:errors="*{dateOfBirth}" class="text-danger"
+                           th:if="${#fields.hasErrors('dateOfBirth')}">
+                        </p>
+                    </div>
+
+
+                    <div class="form-group mb-3">
+                        <label class="form-label">Lakhely</label>
+                        <label for="location"></label>
+                        <input class="form-control"
+                               id="location"
+                               name="location"
+                               placeholder="Lakhelyéneke nevét írja ide"
+                               th:field="*{location}"
+                               type="text"
+                        />
+                        <p th:errors="*{location}" class="text-danger"
+                           th:if="${#fields.hasErrors('location')}">
+                        </p>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="form-label">Utca neve</label>
+                        <label for="street"></label>
+                        <input class="form-control"
+                               id="street"
+                               name="street"
+                               placeholder="Utcája nevét írja ide"
+                               th:field="*{street}"
+                               type="text"
+                        />
+                        <p th:errors="*{street}" class="text-danger"
+                           th:if="${#fields.hasErrors('street')}">
+                        </p>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="form-label">Házszám</label>
+                        <label for="houseNumber"></label>
+                        <input class="form-control"
+                               id="houseNumber"
+                               name="houseNumber"
+                               placeholder="Házának számát írja ide"
+                               th:field="*{houseNumber}"
+                               type="number"
+                        />
+                        <p th:errors="*{houseNumber}" class="text-danger"
+                           th:if="${#fields.hasErrors('houseNumber')}">
+                        </p>
+                    </div>
+
+
+                    <div class="form-group mb-3">
+                        <button class="btn btn-primary" type="submit">Regisztrál</button>
+                        <span>Regisztráltál már? <a href="/" th:href="@{/login}">Lépj be itt!</a></span>
+                    </div>
+                </form>
+            </div>
         </div>
-        <form method="post"  th:action="@{/register/save}" th:object="${user}">
-
-            <p><label for="lastName">Vezetéknév:</label>
-                <input type="text" id="lastName" name="lastname" class="textinput" th:field="*{lastName}"></p>
-            <p th:errors="*{lastName}" class="text-danger"
-               th:if="${#fields.hasErrors('lastName')}">
-            <p><label for="firstName">Keresztnév:</label>
-                <input type="text" id="firstName" name="firstname" class="textinput" th:field="*{firstName}"></p>
-            <p th:errors="*{firstName}" class="text-danger"
-               th:if="${#fields.hasErrors('firstName')}">
-            <p><label for="username">Felhasználónév:</label>
-                <input type="text" id="username" name="username" class="textinput" th:field="*{username}"></p>
-            <p th:errors="*{username}" class="text-danger"
-               th:if="${#fields.hasErrors('username')}">
-            <p><label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" class="textinput" th:field="*{email}"></p>
-            <p th:errors="*{email}" class="text-danger"
-               th:if="${#fields.hasErrors('email')}"></p>
-            <p><label for="password">Jelszó:</label>
-                <input type="password" id="password" name="password" class="textinput" th:field="*{password}"></p>
-            <p th:errors="*{password}" class="text-danger"
-               th:if="${#fields.hasErrors('password')}">
-            <p><label for="yearOfBirth">Születésnap:</label>
-                <input type="date" id="yearOfBirth" name="birth_date" class="dateinput" th:field="*{yearOfBirth}"></p>
-            <p th:errors="*{yearOfBirth}" class="text-danger"
-               th:if="${#fields.hasErrors('yearOfBirth')}">
-            <p><label for="postalCode">Irányítószám:</label>
-                <input type="number" id="postalCode" name="postalCode" class="numinput" th:field="*{postalCode}"></p>
-            <p th:errors="*{postalCode}" class="text-danger"
-               th:if="${#fields.hasErrors('postalCode')}">
-            <p><label for="location">Város:</label>
-                <input type="text" id="location" name="location" class="textinput" th:field="*{location}"></p>
-            <p th:errors="*{location}" class="text-danger"
-               th:if="${#fields.hasErrors('location')}">
-            <p><label for="street">Utca:</label>
-                <input type="text" id="street" name="street" class="textinput" th:field="*{street}"></p>
-            <p th:errors="*{street}" class="text-danger"
-               th:if="${#fields.hasErrors('street')}">
-            <p><label for="house_number">Házszám:</label>
-                <input type="number" id="house_number" name="house_number" class="numinput" th:field="*{house_number}"></p>
-            <p th:errors="*{street}" class="text-danger"
-               th:if="${#fields.hasErrors('street')}">
-            <p><label for="child_name">Gyermek neve:</label>
-                <input type="text" id="child_name" name="child_name" class="textinput" th:field="*{childName}"></p>
-            <p th:errors="*{childName}" class="text-danger"
-               th:if="${#fields.hasErrors('childName')}"></p>
-
-            <p> A gyermek neme:
-                <radio><input type="radio"  id="Fiú" value="Fiú" th:field="*{childGender}">
-                <label for="Fiú">Fiú</label>
-            <input type="radio"  id="Lány" value="Lány" th:field="*{childGender}">
-                <label for="Lány">Lány</label></radio>
-            <p th:errors="*{childGender}" class="text-danger"
-               th:if="${#fields.hasErrors('childGender')}"></p>
-
-            <p><label for="child_date_of_birth">Gyerek születési dátuma:</label>
-                <input type="date" id="child_date_of_birth" name="child_date_of_birth" class="dateinput" th:field="*{childDateOfBirth}"></p>
-            <p th:errors="*{childDateOfBirth}" class="text-danger"
-               th:if="${#fields.hasErrors('childDateOfBirth')}"></p>
-
-            <p>Mire keres partnert?
-                <radio>
-                    <label>
-                        <select name="whatFor" size=”9”>
-                            <option value="Játszótérezni">Játszóterezni!</option>
-                            <option value="Kültéri programok">Kültéri programok</option>
-                            <option value="Aktív tevékenységre">Aktív tevékenységre</option>
-                            <option value="Passzív tevékenységre" selected>Passzív tevékenységre</option>
-                        </select>
-                            <input type="text" id="whatFor" name="whatFor" class="textinput" th:field="*{whatFor}">
-                    </label>
-                </radio></p>
-
-            <p>Mikor alkalmas?
-                <radio>
-                    <label>
-                        <select name="whenTo" size=”5”>
-                            <option value="8-10">8-10 óra</option>
-                            <option value="10-12">10-12 óra</option>
-                            <option value="12-14">12-14 óra</option>
-                            <option value="14-16" >14-16 óra</option>
-                            <option value="16-18" >16-18 óra</option>
-                            <option value="18-20" >18-20 óra</option>
-                        </select>
-                        <input type="text" id="whenTo" name="whenTo" class="textinput" th:field="*{whenTo}">
-                    </label>
-                </radio></p>
-
-
-            <input type="submit" value="Küldés">
-
-        </form>
     </div>
 </div>
 </body>
