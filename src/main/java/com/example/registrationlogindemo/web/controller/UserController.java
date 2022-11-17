@@ -35,12 +35,10 @@ public class UserController {
         model.addAttribute("user", createUserRequest);
         try {
             userService.addUser(createUserRequest);
-        }catch (Exception e) {
-            return "register_unsucces";
+        } catch (Exception e) {
+            return "register_unsuccess";
         }
-
-
-        return "login";
+        return "register_success";
     }
 
     //Endpoints for Postman
