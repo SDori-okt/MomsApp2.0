@@ -9,13 +9,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="registration-login-springboot-security-thymeleaf" />
         <module name="registration-login-demo" />
+        <module name="MomsApp2.0" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17" />
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="registration-login-demo" options="-parameters" />
+      <module name="MomsApp2.0" options="-parameters" />
       <module name="registration-login-springboot-security-thymeleaf" options="-parameters" />
     </option>
   </component>
