@@ -7,16 +7,14 @@ body{
     background-position: center center;
     background-attachment: fixed;
     font-family: "Roboto Condensed", cursive;
-    margin: 0 !important;
+    margin: 0;
     padding: 0;
     height: 100vh;
-    width: 100vw !important;
 }
 
 .container{
     height: 100vh;
-
-    margin:0 !important;
+    margin: 0;
     padding: 0;
 
 }
