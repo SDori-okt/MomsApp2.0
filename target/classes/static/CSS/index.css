@@ -1,95 +1,203 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Style+Script&display=swap');
 
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+
 body{
     background: url("../images/bg.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
     font-family: "Roboto Condensed", cursive;
+    margin: 0 !important;
+    padding: 0;
+    height: 100vh;
+    width: 100vw !important;
 }
-span.logo a{
-    font-size: 40px;
-    font-family: "Style Script", cursive;
-    cursor: pointer;
-    color: black;
+
+.container{
+    height: 100vh;
+
+    margin:0 !important;
+    padding: 0;
+
 }
-span.logo a:hover{
-    text-decoration: none;
-}
-li, a{
-    font-weight: 500;
-    font-size: 18px;
-    color: grey;
-    text-decoration: none;
-}
-header{
-    background-color: white;
+
+.nav{
+    width: 100%;
+    height: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 10%;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.5);
+    background-color: #fff;
 }
-ul.nav_links{
-    list-style: none;
-    padding: 0;
-    margin:0;
-}
-.nav_links li{
-    display: inline-block;
-    padding: 20px 20px;
-    align-items: normal;
-    justify-content: space-around;
-}
-ul.nav_links li a{
-    font-size: 20px;
-    display: block;
-    transition: all 0.3s ease 0s;
-}
-ul.nav_links li a:hover{
-    color: darkgray;
-    text-decoration: none;
-}
-form input[type=text]{
-    padding-left: 5px;
-}
-button{
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    background: none;
-    padding:5px;
-}
-button:hover{
-    background-color: whitesmoke;
-    transition: 0.5s;
-}
-.body_container{
-    padding-top: 20px;
-    padding-bottom: 30px;
-}
-.row .col-md-6{
-    text-align: left;
+
+.brand{
+    font-family: 'Style Script',cursive;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 12pt;
+    padding: 0;
+    flex:1;
 }
-.event_container{
-    margin-top: 10px;
-    background-color: rgba(255,255,255,0.4);
+
+.brand h2{
+    margin:0;
+    cursor: default;
+    margin-left: 10px;
+}
+
+.search{
+    flex:2;
+}
+
+.sfield{
+    outline: none;
+    border: solid 1px #cecece;
     border-radius: 10px;
+    height: 20px;
+    width: 100%;
+    background-color: #f4ecea;
+    padding: 5px;
 }
-.event_container img{
+
+.sfield:focus{
+    box-shadow: 0 0 5px #f7af9d;
+}
+
+.user{
+    flex:1;
+    display: flex;
+    justify-content: flex-end;
+    text-align: right;
+    align-items: center;
+}
+
+.user p{
+    margin-right: 10px;
+}
+
+.profilepic{
+    height: 50px;
+    width: 50px;
+    object-fit: fill;
+    object-position: center center;
     border-radius: 50%;
+    margin-right: 10px;
+}
+
+.menu{
+    z-index: 1000;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.menu ul{
+    display: none;
+}
+
+.hambi{
+    height: 32px;
+    width: 32px;
+    font-size: 14pt;
+}
+
+.content{
+    width:50%;
+    margin: 0 auto;
+}
+
+.cimke{
+
+}
+
+.bejegyzes{
+
+    background-color: #fff;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.4);
+    margin: 20px auto;
+    border-radius:10px;
+}
+
+.top{
+    display: flex;
+}
+
+.ki{
+    flex:1;
+}
+
+.ki img{
+    object-fit: fill;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin:5px;
+}
+
+.nev{
+    flex:6;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.datum{
+    flex:1;
+    display: flex;
+    align-items: center;
+}
+
+.tartalom img{
+    object-fit: fill;
+    width: 100%;
+}
+
+.talp{
+    padding: 10px auto;
+}
+
+.talp form{
+    margin: 10px auto;
+}
+
+.talp input{
+    outline: none;
+    border:solid thin silver;
+    width: 90%;
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.kommentek{
+    border-top:solid silver thin;
+}
+
+.komment{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.kuldo{
+
+}
+
+.kuldo img{
     height: 30px;
     width: 30px;
+    object-fit: fill;
+    border-radius: 50%;
+    margin: 5px;
 }
-.event_container .time_stamp{
-    float: right;
-    text-decoration: none;
-    font-style: normal;
-    font-size: small;
-    font-weight: normal;
-    padding-top: 10px;
-    padding-right: 10px;
+
+.szoveg{
+    text-align: justify;
+    font-size: 11pt;
+}
+
+.szoveg p:nth-child(1){
+    font-weight: bold;
 }
