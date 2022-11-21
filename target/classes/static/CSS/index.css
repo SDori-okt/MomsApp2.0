@@ -2,200 +2,71 @@
 
 
 body{
-    background: url("../images/bg.jpg");
-    background-size: cover;
+    background-image: url("../images/hatter.png");
     background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
     background-attachment: fixed;
-    font-family: "Roboto Condensed", cursive;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
+    font-family: 'Roboto Condensed',sans-serif !important;
 }
 
-.container{
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-
+.navbar{
+    flex-wrap: nowrap !important;
 }
 
-.nav{
-    width: 100%;
-    height: 50px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 3px 5px rgba(0,0,0,0.5);
-    background-color: #fff;
+.container-fluid{
+    padding: 0 !important;
 }
 
-.brand{
+.brandname{
     font-family: 'Style Script',cursive;
-    font-weight: bold;
-    font-size: 12pt;
-    padding: 0;
-    flex:1;
+    font-size: 18pt;
+    margin-left: 25px;
+    color:#242424;
 }
 
-.brand h2{
-    margin:0;
-    cursor: default;
-    margin-left: 10px;
+.shadow{
+    box-shadow: 0px 3px 5px rgba(0,0,0,0.4);
 }
 
-.search{
-    flex:2;
+.profil{
+    margin:0 10px;
 }
 
-.sfield{
-    outline: none;
-    border: solid 1px #cecece;
-    border-radius: 10px;
-    height: 20px;
-    width: 100%;
-    background-color: #f4ecea;
-    padding: 5px;
-}
-
-.sfield:focus{
-    box-shadow: 0 0 5px #f7af9d;
-}
-
-.user{
-    flex:1;
-    display: flex;
-    justify-content: flex-end;
-    text-align: right;
-    align-items: center;
-}
-
-.user p{
-    margin-right: 10px;
-}
-
-.profilepic{
-    height: 50px;
-    width: 50px;
-    object-fit: fill;
-    object-position: center center;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.menu{
-    z-index: 1000;
-    text-align: right;
-    margin-right: 10px;
-}
-
-.menu ul{
-    display: none;
-}
-
-.hambi{
-    height: 32px;
-    width: 32px;
-    font-size: 14pt;
-}
-
-.content{
-    width:50%;
-    margin: 0 auto;
-}
-
-.cimke{
-
-}
-
-.bejegyzes{
-
+.urlap{
+    border-radius: 30px;
     background-color: #fff;
-    box-shadow: 0 3px 5px rgba(0,0,0,0.4);
-    margin: 20px auto;
-    border-radius:10px;
 }
 
-.top{
-    display: flex;
-}
-
-.ki{
-    flex:1;
-}
-
-.ki img{
-    object-fit: fill;
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    margin:5px;
-}
-
-.nev{
-    flex:6;
-    text-align: left;
-    display: flex;
-    align-items: center;
-}
-
-.datum{
-    flex:1;
-    display: flex;
-    align-items: center;
-}
-
-.tartalom img{
-    object-fit: fill;
-    width: 100%;
-}
-
-.talp{
-    padding: 10px auto;
-}
-
-.talp form{
-    margin: 10px auto;
-}
-
-.talp input{
+.posting form input{
+    width:100%;
     outline: none;
-    border:solid thin silver;
-    width: 90%;
-    display: block;
-    margin: 20px auto;
+    border:none;
     padding: 10px;
-    border-radius: 5px;
+    background-color: transparent;
 }
 
-.kommentek{
-    border-top:solid silver thin;
+.posting form button{
+    outline: none;
+    background-color: transparent;
+    border: none;
+    margin-right: 10px;
+    font-size: x-large;
 }
 
-.komment{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+.b-kep{
+    height: 400px;
+    object-fit:cover;
 }
 
-.kuldo{
-
+.hozzaszolas{
+    border-radius: 10px;
+    border:solid thin #ababab;
 }
 
-.kuldo img{
-    height: 30px;
-    width: 30px;
-    object-fit: fill;
-    border-radius: 50%;
-    margin: 5px;
+.hozzaszolas input, .hozzaszolas button{
+    outline: none;
+    border:none;
+    background:none;
 }
 
-.szoveg{
-    text-align: justify;
-    font-size: 11pt;
-}
-
-.szoveg p:nth-child(1){
-    font-weight: bold;
-}
