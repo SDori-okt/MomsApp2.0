@@ -1,95 +1,72 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Style+Script&display=swap');
 
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+
 body{
-    background: url("../images/bg.jpg");
-    font-family: "Roboto Condensed", cursive;
+    background-image: url("../images/hatter.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Roboto Condensed',sans-serif !important;
 }
-span.logo a{
-    font-size: 40px;
-    font-family: "Style Script", cursive;
-    cursor: pointer;
-    color: black;
+
+.navbar{
+    flex-wrap: nowrap !important;
 }
-span.logo a:hover{
-    text-decoration: none;
+
+.container-fluid{
+    padding: 0 !important;
 }
-li, a{
-    font-weight: 500;
-    font-size: 18px;
-    color: grey;
-    text-decoration: none;
+
+.brandname{
+    font-family: 'Style Script',cursive;
+    font-size: 18pt;
+    margin-left: 25px;
+    color:#242424;
 }
-header{
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 10%;
+
+.shadow{
+    box-shadow: 0px 3px 5px rgba(0,0,0,0.4);
 }
-ul.nav_links{
-    list-style: none;
-    padding: 0;
-    margin:0;
+
+.profil{
+    margin:0 10px;
 }
-.nav_links li{
-    display: inline-block;
-    padding: 20px 20px;
-    align-items: normal;
-    justify-content: space-around;
+
+.urlap{
+    border-radius: 30px;
+    background-color: #fff;
 }
-ul.nav_links li a{
-    font-size: 20px;
-    display: block;
-    transition: all 0.3s ease 0s;
+
+.posting form input{
+    width:100%;
+    outline: none;
+    border:none;
+    padding: 10px;
+    background-color: transparent;
 }
-ul.nav_links li a:hover{
-    color: darkgray;
-    text-decoration: none;
-}
-form input[type=text]{
-    padding-left: 5px;
-}
-button{
-    border-radius: 5px;
+
+.posting form button{
+    outline: none;
+    background-color: transparent;
     border: none;
-    cursor: pointer;
-    background: none;
-    padding:5px;
+    margin-right: 10px;
+    font-size: x-large;
 }
-button:hover{
-    background-color: whitesmoke;
-    transition: 0.5s;
+
+.b-kep{
+    height: 400px;
+    object-fit:cover;
 }
-.body_container{
-    padding-top: 20px;
-    padding-bottom: 30px;
-}
-.row .col-md-6{
-    text-align: left;
-    font-weight: bold;
-    font-size: 24px;
-}
-.event_container{
-    margin-top: 10px;
-    background-color: rgba(255,255,255,0.4);
+
+.hozzaszolas{
     border-radius: 10px;
+    border:solid thin #ababab;
 }
-.event_container img{
-    border-radius: 50%;
-    height: 30px;
-    width: 30px;
+
+.hozzaszolas input, .hozzaszolas button{
+    outline: none;
+    border:none;
+    background:none;
 }
-.event_container .time_stamp{
-    float: right;
-    text-decoration: none;
-    font-style: normal;
-    font-size: small;
-    font-weight: normal;
-    padding-top: 10px;
-    padding-right: 10px;
-}
+
