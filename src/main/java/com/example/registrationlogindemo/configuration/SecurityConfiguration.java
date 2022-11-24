@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 
 @Configuration
 @EnableWebSecurity(debug = true)
@@ -34,6 +35,11 @@ public class SecurityConfiguration {
 //                            auth.requestMatchers("/api/users").hasRole("ADMIN");
                             auth.anyRequest().permitAll();
                         }
+                ).formLogin()
+                .loginPage("/login")
+                .and().logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .addLogoutHandler(new SecurityContextLogoutHandler())
                 )
                 .httpBasic(Customizer.withDefaults());
         return http.build();

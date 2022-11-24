@@ -29,6 +29,10 @@ public class EventEntity {
     @Column(name = "event_date_time", nullable = false)
     private LocalDateTime eventDateTime;
 
-    @ManyToMany(mappedBy = "events_taken", fetch = FetchType.LAZY)
+    @ManyToOne
+    @JoinColumn(name = "created_by")
+    private UserEntity createdBy;
+
+    @ManyToMany(mappedBy = "events_taken", fetch = FetchType.EAGER)
     private List<UserEntity> user;
 }
