@@ -63,7 +63,7 @@ public class UserController {
 //        model.addAttribute("housenumber",byUserName.get().getHouseNumber());
 
         model.addAttribute("user", new UserEntity());
-        return "edit_profile";
+        return "profile";
     }
 
     @PutMapping("/personal/{id}")
