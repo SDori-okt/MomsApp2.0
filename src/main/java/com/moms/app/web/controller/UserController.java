@@ -47,23 +47,22 @@ public class UserController {
 
 
     @GetMapping("/profile")
-    public String updateUserPersonalDataForm(Model model) {
-        if (logInCheck()) {
+    public String loadProfile(Model model){
+        if(logInCheck()){
             return "login";
         }
-
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         Optional<UserEntity> byUserName = userService.findByUserName(name);
-
-//        model.addAttribute("first_name",byUserName.get().getFirstName());
-//        model.addAttribute("last_name",byUserName.get().getLastName());
-//        model.addAttribute("date_of_birth",byUserName.get().getDateOfBirth());
-//        model.addAttribute("város",byUserName.get().getLocation());
-//        model.addAttribute("street",byUserName.get().getStreet());
-//        model.addAttribute("housenumber",byUserName.get().getHouseNumber());
-
         model.addAttribute("user", new UserEntity());
         return "profile";
+    }
+
+    @GetMapping("/edit_profile")
+    public String showUpdateForm(Model model) {
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        Optional<UserEntity> byUserName = userService.findByUserName(name);
+        model.addAttribute("user", byUserName);
+        return "edit_profile";
     }
 
     @PutMapping("/personal/{id}")
