@@ -35,6 +35,9 @@
                 <li class="nav-item">
                     <a class="nav-link text-right" aria-current="page" th:href="@{/events}">Események</a>
                 </li>
+                <form method='post' th:action="@{/logout}">
+                    <input type='submit' value='Kijelentkezés'>
+                </form>
             </ul>
         </div>
 
@@ -48,6 +51,7 @@
     </div>
 </nav>
 <div class="container-md w-50 m-auto p-3">
+    <div>Bejelentkezve: <span sec:authentication="principal.username"></span></div>
     <div class="container p-0 mb-3 mt-3 posting">
         <h1>Események</h1>
         <form class="d-flex p-2 justify-content-around urlap shadow">
