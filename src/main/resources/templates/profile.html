@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class="navbar-nav p-2">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Főoldal</a>
+                    <a class="nav-link" href="#">Főoldal</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-right" aria-current="page" th:href="@{/profile}">Profilom </a>
@@ -30,6 +30,12 @@
                 <li class="nav-item">
                     <a class="nav-link text-right" aria-current="page" th:href="@{/events}">Események</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-right" aria-current="page" th:href="@{/own_events}">Saját események</a>
+                </li>
+                <form method='post' th:action="@{/logout}">
+                    <input type='submit' value='Kijelentkezés'>
+                </form>
             </ul>
         </div>
 

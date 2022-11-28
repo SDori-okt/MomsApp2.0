@@ -9,7 +9,44 @@
           crossorigin="anonymous" />
 </head>
 <body>
+<nav class="navbar navbar-expand-sm  bg-light navbar-light d-flex justify-content-between shadow">
+    <span class="brandname">MomsApp</span>
 
+    <div class="container-fluid justify-content-end mr-auto">
+
+        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+            <ul class="navbar-nav p-2">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Főoldal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-right" aria-current="page" th:href="@{/profile}">Profilom </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-right" aria-current="page" th:href="@{/create_event}">Esemény létrehozása</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-right" aria-current="page" th:href="@{/events}">Események</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-right" aria-current="page" th:href="@{/own_events}">Saját események</a>
+                </li>
+                <form method='post' th:action="@{/logout}">
+                    <input type='submit' value='Kijelentkezés'>
+                </form>
+            </ul>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <span class="navbar-item">
+              <img src="../images/profil.jpeg" alt="profil" style="width:40px; height:40px; object-fit:cover;margin-right:25px;" class="rounded-pill profil shadow">
+        </span>
+    </div>
+</nav>
+<br/>
 <div class="container">
 
     <h3>Adatok módosítása</h3>
