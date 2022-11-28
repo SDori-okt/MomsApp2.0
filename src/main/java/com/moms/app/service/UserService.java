@@ -51,12 +51,12 @@ public class UserService {
         }
     }
 
-    public Optional<UserEntity> updateUserPersonalData(long id, CreateUserRequest createUserRequest) {
-        Optional<UserEntity> maybeUserEntity = userRepository.findById(id);
+    public Optional<UserEntity> updateUserPersonalData(String userName, CreateUserRequest createUserRequest) {
+        Optional<UserEntity> maybeUserEntity = userRepository.findByUsername(userName);
         Optional<UserEntity> existingEmail = userRepository.findByEmail(createUserRequest.getEmail());
 
         if (maybeUserEntity.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("User not found with id: %s", id));
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("User not found with user name: %s", userName));
         } else if (existingEmail.isPresent()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("User e-mail address already exists: %s", existingEmail.get().getEmail()));
         }

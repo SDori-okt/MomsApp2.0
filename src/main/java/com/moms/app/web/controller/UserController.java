@@ -92,13 +92,13 @@ public class UserController {
     }
 
     // Endpoint for Postman test
-    @PutMapping("/api/personal/{id}")
-    @ResponseStatus(HttpStatus.OK)
-//    @RolesAllowed("ADMIN", "USER")
-    public void updateUserPersonalData(@PathVariable("id") long id,
-                                       @RequestBody CreateUserRequest createUserRequest) {
-        userService.updateUserPersonalData(id, createUserRequest);
-    }
+//    @PutMapping("/api/personal/{id}")
+//    @ResponseStatus(HttpStatus.OK)
+////    @RolesAllowed("ADMIN", "USER")
+//    public void updateUserPersonalData(@PathVariable("id") long id,
+//                                       @RequestBody CreateUserRequest createUserRequest) {
+//        userService.updateUserPersonalData(id, createUserRequest);
+//    }
 
     // Endpoint for Postman test
     @PutMapping("/api/logIn/{id}")
