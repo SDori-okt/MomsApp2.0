@@ -4,6 +4,8 @@ import com.moms.app.persistence.entity.UserEntity;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,10 +15,16 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class UserDetailsPrincipal implements UserDetails {
 
     private UserEntity user;
+    private Set<GrantedAuthority> roles;
+
+    public UserDetailsPrincipal(UserEntity user){
+        this.user = user;
+        this.roles = new HashSet<>(user.getRoles());
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return roles;
     }
 
     @Override

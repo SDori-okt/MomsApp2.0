@@ -20,7 +20,7 @@ import java.util.List;
 @AllArgsConstructor
 @Validated
 @RequestMapping
-public class EventController {
+public class EventController extends AbstractController {
     private EventService eventService;
 
     @GetMapping("/get_event")
@@ -37,8 +37,8 @@ public class EventController {
         if (logInCheck()) {
             return "login";
         }
-        List<EventEntity> eventEntities = eventService.findAll();
-        model.addAttribute("events", eventEntities);
+        List<EventEntity> all = eventService.findAllEvents();
+        model.addAttribute("events", all);
         return "events";
     }
 
@@ -65,9 +65,13 @@ public class EventController {
         }
     }
 
-    private boolean logInCheck() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return authentication == null || authentication instanceof AnonymousAuthenticationToken;
+    @GetMapping("/own_events")
+    public String listAllOwnEvents(Model model, HttpSession session) {
+        if (logInCheck()) {
+            return "login";
+        }
+        List<EventEntity> all = eventService.findAllLoggedPlayerEvents();
+        model.addAttribute("events", all);
+        return "events";
     }
-
 }

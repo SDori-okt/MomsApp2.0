@@ -1,6 +1,7 @@
 package com.moms.app.web.controller;
 
 import com.moms.app.persistence.entity.UserEntity;
+import com.moms.app.persistence.repository.UserRepository;
 import com.moms.app.service.UserService;
 import com.moms.app.web.model.CreateUserRequest;
 import com.moms.app.web.model.PagingSortingFilteringRequest;
@@ -14,6 +15,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,8 +26,9 @@ import java.util.Optional;
 @AllArgsConstructor
 @Validated
 @RequestMapping
-public class UserController {
+public class UserController extends AbstractController{
     private UserService userService;
+    private UserRepository userRepository;
 
     @GetMapping("/register")
     public String registerForm(Model model) {
@@ -45,6 +48,15 @@ public class UserController {
         return "register_success";
     }
 
+    @GetMapping("/users")
+    public String getUsers(Model model) {
+        if (logInCheck()) {
+            return "login";
+        }
+        List<UserEntity> users = userService.findAll();
+        model.addAttribute("users", users);
+        return "users";
+    }
 
     @GetMapping("/profile")
     public String loadProfile(Model model){
@@ -53,7 +65,7 @@ public class UserController {
         }
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         Optional<UserEntity> byUserName = userService.findByUserName(name);
-        model.addAttribute("user", new UserEntity());
+        model.addAttribute("user", byUserName);
         return "profile";
     }
 
@@ -65,19 +77,18 @@ public class UserController {
         return "edit_profile";
     }
 
-    @PutMapping("/personal/{id}")
-    @ResponseStatus(HttpStatus.OK)
-//    @RolesAllowed("ADMIN", "USER")
-    public void updateUserPersonalData(@ModelAttribute CreateUserRequest createUserRequest, Model model) {
-        model.addAttribute("user", createUserRequest);
-//        userService.updateUserPersonalData(id, createUserRequest);
-    }
+    @PostMapping("/edit_profile")
+    public String updateUser(@Valid UserEntity user,
+                             BindingResult result, Model model) {
+        model.addAttribute("user", user);
+        if (result.hasErrors()) {
+            user.setId(user.getId());
+            return "edit_profile";
+        }
 
-    private boolean logInCheck() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return authentication == null || authentication instanceof AnonymousAuthenticationToken;
+        userRepository.save(user);
+        return "redirect:/profile";
     }
-
 
     //Endpoints for Postman
     //------------------------------------------------------------------------------------------------------------------
@@ -100,13 +111,13 @@ public class UserController {
 //    }
 
     // Endpoint for Postman test
-    @PutMapping("/api/logIn/{id}")
-    @ResponseStatus(HttpStatus.OK)
-//    @RolesAllowed("ADMIN", "USER")
-    public void updateUserLogInData(@PathVariable("id") long id,
-                                    @RequestBody CreateUserRequest createUserRequest) {
-        userService.updateUserPassword(id, createUserRequest);
-    }
+//    @PutMapping("/api/logIn/{id}")
+//    @ResponseStatus(HttpStatus.OK)
+////    @RolesAllowed("ADMIN", "USER")
+//    public void updateUserLogInData(@PathVariable("id") long id,
+//                                    @RequestBody CreateUserRequest createUserRequest) {
+//        userService.updateUserPassword(id, createUserRequest);
+//    }
 
     // Endpoint for Postman test
     @GetMapping(path = "/api/findAllUsers")
@@ -121,15 +132,4 @@ public class UserController {
     ) {
         return userService.findAllUser(PagingSortingFilteringRequest.builder().page(page).size(size).sorting(sorting).sort(sort).search(search).build());
     }
-
-
-
-
-    @GetMapping("/users")
-    public String getUsers(Model model) {
-        List<UserEntity> users = userService.findAll();
-        model.addAttribute("users", users);
-        return "users";
-    }
-
 }

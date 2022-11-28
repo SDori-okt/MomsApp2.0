@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -37,8 +38,25 @@ public class EventService {
         return event;
     }
 
-    public List<EventEntity> findAll() {
-        return eventRepository.findAll();
+    public List<EventEntity> findAllLoggedPlayerEvents() {
+        String currentPrincipalName = SecurityContextHolder.getContext().getAuthentication().getName();
+        UserEntity userEntity = userRepository.findByUsername(currentPrincipalName).get();
+
+        List<EventEntity> events_taken = userEntity.getEvents_taken();
+
+        return events_taken;
     }
 
+    public List<EventEntity> findAllEvents() {
+        List<UserEntity> allUser = userRepository.findAll();
+        List<EventEntity> allEvent = new ArrayList<>();
+
+        for (UserEntity user : allUser) {
+            List<EventEntity> events_taken = user.getEvents_taken();
+            for (EventEntity event : events_taken) {
+                allEvent.add(event);
+            }
+        }
+        return allEvent;
+    }
 }

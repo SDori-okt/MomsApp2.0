@@ -1,7 +1,15 @@
 package com.moms.app.persistence.entity;
 
-public enum UserRole {
+import org.springframework.security.core.GrantedAuthority;
+
+public enum UserRole implements GrantedAuthority {
     ADMIN,
     CREATOR,
-    USER
+    USER;
+
+
+    @Override
+    public String getAuthority() {
+        return name();
+    }
 }

@@ -63,14 +63,14 @@ public class UserService {
         return Optional.of(userRepository.save(updateUserPersonalData(maybeUserEntity.get(), createUserRequest)));
     }
 
-    public Optional<UserEntity> updateUserPassword(long id, CreateUserRequest createUserRequest) {
-        Optional<UserEntity> maybeUserEntity = userRepository.findById(id);
-
-        if (maybeUserEntity.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("User not found with id: %s", id));
-        }
-        return Optional.of(userRepository.save(updateUserPassword(maybeUserEntity.get(), createUserRequest)));
-    }
+//    public Optional<UserEntity> updateUserPassword(long id, CreateUserRequest createUserRequest) {
+//        Optional<UserEntity> maybeUserEntity = userRepository.findById(id);
+//
+//        if (maybeUserEntity.isEmpty()) {
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("User not found with id: %s", id));
+//        }
+//        return Optional.of(userRepository.save(updateUserPassword(maybeUserEntity.get(), createUserRequest)));
+//    }
 
     public List<UserEntity> findAllUser(PagingSortingFilteringRequest pagingSortingFilteringRequest) {
         List<UserEntity> listedUsers = new ArrayList<>();
@@ -112,10 +112,10 @@ public class UserService {
         return maybeUserEntity;
     }
 
-    private UserEntity updateUserPassword(UserEntity current, CreateUserRequest createUserRequest) {
-        current.setPassword(new BCryptPasswordEncoder().encode(createUserRequest.getPassword()));
-        return current;
-    }
+//    private UserEntity updateUserPassword(UserEntity current, CreateUserRequest createUserRequest) {
+//        current.setPassword(new BCryptPasswordEncoder().encode(createUserRequest.getPassword()));
+//        return current;
+//    }
 
     public List<UserEntity> findAll() {
         return userRepository.findAll();
