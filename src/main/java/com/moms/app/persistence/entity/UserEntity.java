@@ -61,7 +61,7 @@ public class UserEntity {
     @Enumerated(EnumType.STRING)
     private Set<UserRole> roles;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "events_users",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "event_id"))

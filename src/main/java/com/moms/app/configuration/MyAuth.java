@@ -1,5 +1,4 @@
 package com.moms.app.configuration;
-
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
