@@ -18,13 +18,18 @@
 <body>
 <nav class="navbar navbar-expand-sm  bg-light navbar-light d-flex justify-content-between shadow">
     <span class="brandname">MomsApp</span>
-
-    <div class="container-fluid justify-content-end mr-auto">
+    <div class="container-fluid justify-content-middle mr-auto">
+    <form th:action="@{/search}" method="get">
+        <input type="text" name="keyword" th:value="${keyword}"  placeholder="Keresés" size="50" >
+        <button type="submit" class="btn btn-info" >Search</button>
+    </form>
+    </div>
+        <div class="container-fluid justify-content-end mr-auto">
 
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class="navbar-nav p-2">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Főoldal</a>
+                    <a class="nav-link" th:href="@{/index}">Főoldal</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-right" aria-current="page" th:href="@{/profile}">Profilom </a>

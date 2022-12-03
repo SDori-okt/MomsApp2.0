@@ -8,6 +8,7 @@ import com.moms.app.web.model.PagingSortingFilteringRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -110,6 +111,17 @@ public class UserService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("User not found with user name: %s", userName));
         }
         return maybeUserEntity;
+    }
+
+    public List<UserEntity> findByLocation(String location){
+        List<UserEntity> all = userRepository.findAll();
+        List<UserEntity> byLocation = null;
+        for(UserEntity u : all){
+            if(u.getLocation().equals(location)){
+                byLocation.add(u);
+            }
+        }
+        return byLocation;
     }
 
 //    private UserEntity updateUserPassword(UserEntity current, CreateUserRequest createUserRequest) {

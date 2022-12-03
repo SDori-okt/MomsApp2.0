@@ -28,7 +28,6 @@ import java.util.Optional;
 @RequestMapping
 public class UserController extends AbstractController{
     private UserService userService;
-    private UserRepository userRepository;
 
     @GetMapping("/register")
     public String registerForm(Model model) {
@@ -77,17 +76,27 @@ public class UserController extends AbstractController{
         return "edit_profile";
     }
 
-    @PostMapping("/edit_profile")
-    public String updateUser(@Valid UserEntity user,
-                             BindingResult result, Model model) {
-        model.addAttribute("user", user);
-        if (result.hasErrors()) {
-            user.setId(user.getId());
-            return "edit_profile";
-        }
+    @PutMapping("/edit_profile")
+    public String updateUser(@Valid @ModelAttribute("user") CreateUserRequest createUserRequest, Model model){
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        Optional<UserEntity> byUserName = userService.findByUserName(name);
+        userService.updateUserPersonalData(name, createUserRequest);
+        return "profile";
+    }
 
-        userRepository.save(user);
-        return "redirect:/profile";
+    @GetMapping("/user_search")
+    public String getSearchForm(){
+        return "user_search";
+    }
+
+    @RequestMapping(path = {"/search"})
+    public String searchByUsername(Model model, String keyword){
+        if(keyword!=null){
+            Optional<UserEntity> list2 = userService.findByUserName(keyword);
+            List<UserEntity> list = list2.stream().toList();
+            model.addAttribute("list", list);
+        }
+        return "user_search";
     }
 
     //Endpoints for Postman
@@ -104,7 +113,7 @@ public class UserController extends AbstractController{
     // Endpoint for Postman test
 //    @PutMapping("/api/personal/{id}")
 //    @ResponseStatus(HttpStatus.OK)
-////    @RolesAllowed("ADMIN", "USER")
+//    @RolesAllowed("ADMIN", "USER")
 //    public void updateUserPersonalData(@PathVariable("id") long id,
 //                                       @RequestBody CreateUserRequest createUserRequest) {
 //        userService.updateUserPersonalData(id, createUserRequest);
@@ -113,7 +122,7 @@ public class UserController extends AbstractController{
     // Endpoint for Postman test
 //    @PutMapping("/api/logIn/{id}")
 //    @ResponseStatus(HttpStatus.OK)
-////    @RolesAllowed("ADMIN", "USER")
+//    @RolesAllowed("ADMIN", "USER")
 //    public void updateUserLogInData(@PathVariable("id") long id,
 //                                    @RequestBody CreateUserRequest createUserRequest) {
 //        userService.updateUserPassword(id, createUserRequest);
