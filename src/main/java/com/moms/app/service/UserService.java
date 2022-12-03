@@ -5,6 +5,9 @@ import com.moms.app.persistence.repository.UserRepository;
 import com.moms.app.service.mapper.UserMapper;
 import com.moms.app.web.model.CreateUserRequest;
 import com.moms.app.web.model.PagingSortingFilteringRequest;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.http.HttpStatus;
@@ -103,6 +106,20 @@ public class UserService {
         current.setStreet(createUserRequest.getStreet());
         current.setHouseNumber(createUserRequest.getHouseNumber());
         return current;
+    }
+
+    public List<UserEntity> findByKeyword(String keyword) {
+        if(keyword.isBlank()){
+            return null;
+        }
+        List<UserEntity> list = new ArrayList<>();
+        for(UserEntity u : userRepository.findAll()){
+            if(u.getUsername().contains(keyword) || u.getLocation().contains(keyword)
+            || u.getFirstName().contains(keyword) || u.getLastName().contains(keyword)){
+                list.add(u);
+            }
+        }
+        return list;
     }
 
     public Optional<UserEntity> findByUserName(String userName) {

@@ -92,9 +92,9 @@ public class UserController extends AbstractController{
     @RequestMapping(path = {"/search"})
     public String searchByUsername(Model model, String keyword){
         if(keyword!=null){
-            Optional<UserEntity> list2 = userService.findByUserName(keyword);
-            List<UserEntity> list = list2.stream().toList();
+            List<UserEntity> list = userService.findByKeyword(keyword);
             model.addAttribute("list", list);
+            model.addAttribute("keyword", keyword);
         }
         return "user_search";
     }
