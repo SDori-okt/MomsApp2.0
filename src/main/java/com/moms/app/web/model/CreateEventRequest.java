@@ -20,7 +20,7 @@ public class CreateEventRequest {
     private String description;
 
     @NotBlank(message = "A mező kitöltése kötelező")
-    @DateTimeFormat(pattern = "yyyy-MM-DD hh:mm:ss")
+    @DateTimeFormat(pattern = "YYYY-MM-DD hh:mm:ss")
     private LocalDateTime eventDateTime;
 
     @JsonProperty(value = "userId")
