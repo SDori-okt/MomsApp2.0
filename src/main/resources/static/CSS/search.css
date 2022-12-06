@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Style+Script&display=swap');
+
+body{
+    background-image: url("../images/hatter.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Roboto Condensed',sans-serif !important;
+}
+
+.navbar{
+    flex-wrap: nowrap !important;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form p{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}

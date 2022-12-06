@@ -29,13 +29,13 @@ public class UserService {
         Optional<UserEntity> maybeUserEmail = userRepository.findByEmail(email);
         if (maybeUserEmail.isPresent()) {
 
-            throw new Exception(String.format("User e-mail address already exists: '%s'", email));
+            throw new Exception(String.format("Az e-mail cím már foglalt: '%s'", email));
         }
 
         String userName = createUserRequest.getUsername();
         Optional<UserEntity> maybeUserName = userRepository.findByUsername(userName);
         if (maybeUserName.isPresent()) {
-            throw new Exception(String.format("User name already used: '%s'", userName));
+            throw new Exception(String.format("A felhasználói név már foglalt: '%s'", userName));
         }
 
         UserEntity user = userMapper.map(createUserRequest);
@@ -45,7 +45,7 @@ public class UserService {
 
     public void softDelete(long id) {
         if (!userRepository.existsById(id)) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("User not found with id: %s", id));
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("A felhasználó nem található ezzel az id-val: %s", id));
         } else {
             userRepository.deleteById(id);
         }
@@ -56,9 +56,9 @@ public class UserService {
         Optional<UserEntity> existingEmail = userRepository.findByEmail(createUserRequest.getEmail());
 
         if (maybeUserEntity.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("User not found with user name: %s", userName));
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Felhasználónév nem található: %s", userName));
         } else if (existingEmail.isPresent()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("User e-mail address already exists: %s", existingEmail.get().getEmail()));
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Az e-mailcím már foglalt: %s", existingEmail.get().getEmail()));
         }
         return Optional.of(userRepository.save(updateUserPersonalData(maybeUserEntity.get(), createUserRequest)));
     }
@@ -121,7 +121,7 @@ public class UserService {
     public Optional<UserEntity> findByUserName(String userName) {
         Optional<UserEntity> maybeUserEntity = userRepository.findByUsername(userName);
         if (maybeUserEntity.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("User not found with user name: %s", userName));
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Nem található ilyen felhasználónév: %s", userName));
         }
         return maybeUserEntity;
     }
