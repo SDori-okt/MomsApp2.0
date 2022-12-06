@@ -12,6 +12,7 @@ public class EventMapper {
                 .eventName(createEventRequest.getEventName())
                 .description(createEventRequest.getDescription())
                 .eventDateTime(createEventRequest.getEventDateTime())
+                .createdBy(createEventRequest.getUserEntity())
                 .build();
     }
 }

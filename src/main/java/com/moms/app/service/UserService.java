@@ -126,17 +126,6 @@ public class UserService {
         return maybeUserEntity;
     }
 
-    public List<UserEntity> findByLocation(String location){
-        List<UserEntity> all = userRepository.findAll();
-        List<UserEntity> byLocation = null;
-        for(UserEntity u : all){
-            if(u.getLocation().equals(location)){
-                byLocation.add(u);
-            }
-        }
-        return byLocation;
-    }
-
 //    private UserEntity updateUserPassword(UserEntity current, CreateUserRequest createUserRequest) {
 //        current.setPassword(new BCryptPasswordEncoder().encode(createUserRequest.getPassword()));
 //        return current;

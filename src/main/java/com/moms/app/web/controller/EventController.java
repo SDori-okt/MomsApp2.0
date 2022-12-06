@@ -32,14 +32,14 @@ public class EventController extends AbstractController {
         return "create_event";
     }
 
-    @GetMapping("/events")
+    @GetMapping("/")
     public String listAllEvents(Model model, HttpSession session) {
         if (logInCheck()) {
             return "login";
         }
         List<EventEntity> all = eventService.findAllEvents();
         model.addAttribute("events", all);
-        return "events";
+        return "index";
     }
 
     @GetMapping("/create_event")
@@ -72,6 +72,6 @@ public class EventController extends AbstractController {
         }
         List<EventEntity> all = eventService.findAllLoggedPlayerEvents();
         model.addAttribute("events", all);
-        return "events";
+        return "index";
     }
 }

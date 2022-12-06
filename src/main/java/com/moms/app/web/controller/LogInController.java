@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @AllArgsConstructor
 public class LogInController extends AbstractController {
 
-    @GetMapping(path = "/index")
+    @GetMapping("/index")
     public String indexPage() {
         return "index";
     }
@@ -25,6 +25,6 @@ public class LogInController extends AbstractController {
             model.addAttribute("user", new UserEntity());
             return "login";
         }
-        return "index";
+        return "redirect:/index";
     }
 }

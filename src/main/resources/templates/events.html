@@ -55,6 +55,7 @@
         <td>Esemény neve</td>
         <td>Leírás</td>
         <td>Dátum</td>
+        <td>Létrehozó</td>
     </tr>
     </thead>
     <tr th:each="events:${events}">
@@ -62,6 +63,7 @@
         <td th:text="${events.eventName}">Esemény neve</td>
         <td th:text="${events.description}">Leírás</td>
         <td th:text="${events.eventDateTime}">Időpont</td>
+        <td th:text="${events.createdBy}">Létrehozó</td>
     </tr>
 </table>
 </body>
