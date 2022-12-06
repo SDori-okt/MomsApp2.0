@@ -1,33 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
 <head>
     <meta charset="UTF-8">
-    <title>Események</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
+    <title>Keresés</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+
+    <link rel="stylesheet" th:href="@{/css/search.css}"/>
 </head>
 <body>
+
 <nav class="navbar navbar-expand-sm  bg-light navbar-light d-flex justify-content-between shadow">
     <span class="brandname">MomsApp</span>
-
+    <form th:action="@{/search}" method="get">
+        <input type="text" name="keyword" th:value="${keyword}"  placeholder="Keresés" size="50" >
+        <button type="submit" class="btn btn-info" >Keresés</button>
+    </form>
     <div class="container-fluid justify-content-end mr-auto">
-
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class="navbar-nav p-2">
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/index}">Főoldal</a>
+                    <a class="nav-link" th:href="@{/}">Főoldal</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-right" aria-current="page" th:href="@{/profile}">Profilom </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-right" aria-current="page" th:href="@{/create_event}">Esemény létrehozása</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-right" aria-current="page" th:href="@{/events}">Események</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-right" aria-current="page" th:href="@{/own_events}">Saját események</a>
@@ -47,24 +50,26 @@
         </span>
     </div>
 </nav>
-<br>
-<table class="table table-stripped">
-    <thead>
-    <tr>
-        <td>Id</td>
-        <td>Esemény neve</td>
-        <td>Leírás</td>
-        <td>Dátum</td>
-        <td>Létrehozó</td>
-    </tr>
-    </thead>
-    <tr th:each="events:${events}">
-        <td th:text="${events.id}">Id</td>
-        <td th:text="${events.eventName}">Esemény neve</td>
-        <td th:text="${events.description}">Leírás</td>
-        <td th:text="${events.eventDateTime}">Időpont</td>
-        <td th:text="${events.createdBy}">Létrehozó</td>
-    </tr>
-</table>
+
+        <span>Találat(ok) a következőre:</span>
+<span style="font-style: italic" th:text="${keyword}"></span>
+        <table class="table table-striped">
+            <tr>
+                <th>Vezetéknév</th>
+                <th>Keresztnév</th>
+                <th>Felhasználónév</th>
+                <th>Email</th>
+                <th>Lakhely</th>
+            </tr>
+            <tr th:each="l: ${list}">
+                <td th:text="${l.firstName}"></td>
+                <td th:text="${l.lastName}"></td>
+                <td th:text="${l.username}"></td>
+                <td th:text="${l.email}"></td>
+                <td th:text="${l.location}"></td>
+            </tr>
+        </table>
+    </div>
+</form>
 </body>
 </html>
