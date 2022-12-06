@@ -23,15 +23,6 @@ import java.util.List;
 public class EventController extends AbstractController {
     private EventService eventService;
 
-    @GetMapping("/get_event")
-    public String createEventView(Model model, HttpSession session) {
-        if (logInCheck()) {
-            return "login";
-        }
-        model.addAttribute("event", new EventEntity());
-        return "create_event";
-    }
-
     @GetMapping("/")
     public String listAllEvents(Model model, HttpSession session) {
         if (logInCheck()) {
